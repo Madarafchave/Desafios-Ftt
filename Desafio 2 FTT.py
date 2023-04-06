@@ -1,4 +1,4 @@
-class personagem:
+class Personagem:
     def __init__(self, nome, descricao, link_imagem, programa, animador):
         self.nome = nome
         self.descricao = descricao
@@ -6,14 +6,15 @@ class personagem:
         self.programa = programa
         self.animador = animador
 
-    def funct_nome():
+    @classmethod
+    def criar_personagem(cls):
         nome = input("Qual nome do personagem?")
         descricao = input("Digite a descrição do seu personagem:")
         link_imagem = input("Digite o link para a imagem do personagem:")
         programa = input("Digite o programa do seu personagem:")
-        animador = input
-        ("Digite o nome do animador responsável pelo personagem:")
-        return Personagem(nome, descricao, link_imagem, programa, animador)
+        animador = input(
+            "Digite o nome do animador responsável pelo personagem:")
+        return cls(nome, descricao, link_imagem, programa, animador)
 
     def visualizar_personagens(self, personagens):
         for i, personagem in enumerate(personagens):
@@ -34,12 +35,13 @@ while True:
     print("3 - Sair")
     opcao = input("Digite a opção desejada:")
     if opcao == "1":
-        personagem = personagem.funct_nome()
+        personagem = Personagem.criar_personagem()
         personagens.append(personagem)
     elif opcao == "2":
         if len(personagens) > 0:
             personagem.visualizar_personagens(personagens)
     elif opcao == "3":
+        print("Saindo...")
         break
     else:
         print("Opção inválida!")
